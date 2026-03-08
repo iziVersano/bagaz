@@ -7,11 +7,12 @@ export const judges: Judge[] = [
     image: '',
     tags: ['זכויות אדם', 'פעילות שיפוטית', 'ביקורת חוקתית'],
     profile: {
-      rightsProtection: 0.88,
-      governmentDeference: 0.20,
-      securityWeight: 0.30,
-      religiousConsideration: 0.25,
-      activismLevel: 0.85,
+      // הובילה את פסיקת הסבירות 8-7; מתונה-ליברלית, לא קיצונית
+      rightsProtection: 0.75,
+      governmentDeference: 0.35,
+      securityWeight: 0.45,
+      religiousConsideration: 0.35,
+      activismLevel: 0.75,
     },
   },
   {
@@ -20,11 +21,12 @@ export const judges: Judge[] = [
     image: '',
     tags: ['מינהל ציבורי', 'זכויות יסוד', 'ביקורת שיפוטית'],
     profile: {
-      rightsProtection: 0.65,
-      governmentDeference: 0.48,
+      // נשיא בית המשפט העליון הנוכחי; הצביע לבטל תיקון הסבירות; ליברלי חזק
+      rightsProtection: 0.80,
+      governmentDeference: 0.30,
       securityWeight: 0.50,
-      religiousConsideration: 0.42,
-      activismLevel: 0.40,
+      religiousConsideration: 0.25,
+      activismLevel: 0.80,
     },
   },
   {
@@ -33,11 +35,12 @@ export const judges: Judge[] = [
     image: '',
     tags: ['שמרנות שיפוטית', 'דת ומדינה', 'ריסון שיפוטי'],
     profile: {
-      rightsProtection: 0.45,
-      governmentDeference: 0.70,
-      securityWeight: 0.65,
-      religiousConsideration: 0.80,
-      activismLevel: 0.25,
+      // השמרן הקיצוני ביותר; דחה כל סמכות לביקורת על חוקי יסוד; מתנחל דתי-לאומי
+      rightsProtection: 0.20,
+      governmentDeference: 0.80,
+      securityWeight: 0.85,
+      religiousConsideration: 0.75,
+      activismLevel: 0.10,
     },
   },
   {
@@ -46,11 +49,12 @@ export const judges: Judge[] = [
     image: '',
     tags: ['משפט ציבורי', 'זכויות נשים', 'שקיפות ממשלתית'],
     profile: {
-      rightsProtection: 0.70,
-      governmentDeference: 0.45,
-      securityWeight: 0.42,
-      religiousConsideration: 0.35,
-      activismLevel: 0.42,
+      // אקדמאית חוקתית בולטת; הצביעה לבטל תיקון הסבירות; ליברלית חזקה
+      rightsProtection: 0.85,
+      governmentDeference: 0.25,
+      securityWeight: 0.40,
+      religiousConsideration: 0.20,
+      activismLevel: 0.82,
     },
   },
   {
@@ -59,10 +63,11 @@ export const judges: Judge[] = [
     image: '',
     tags: ['זכויות חברתיות', 'שוויון', 'פרשנות ליברלית'],
     profile: {
-      rightsProtection: 0.83,
+      // ליברלית עקבית; כינתה את ההפיכה המשפטית "דרך למשטר טוטליטרי"
+      rightsProtection: 0.80,
       governmentDeference: 0.25,
-      securityWeight: 0.30,
-      religiousConsideration: 0.22,
+      securityWeight: 0.40,
+      religiousConsideration: 0.25,
       activismLevel: 0.78,
     },
   },
@@ -72,11 +77,12 @@ export const judges: Judge[] = [
     image: '',
     tags: ['משפט פלילי', 'זכויות נאשמים', 'הליך הוגן'],
     profile: {
-      rightsProtection: 0.72,
-      governmentDeference: 0.38,
-      securityWeight: 0.40,
-      religiousConsideration: 0.35,
-      activismLevel: 0.65,
+      // שמרנית מתונה; מונתה ע"י שקד; הצביעה נגד ביטול תיקון הסבירות
+      rightsProtection: 0.40,
+      governmentDeference: 0.65,
+      securityWeight: 0.55,
+      religiousConsideration: 0.45,
+      activismLevel: 0.25,
     },
   },
   {
@@ -85,11 +91,12 @@ export const judges: Judge[] = [
     image: '',
     tags: ['שוויון אזרחי', 'זכויות מיעוטים', 'אנטי-אפליה'],
     profile: {
-      rightsProtection: 0.87,
-      governmentDeference: 0.18,
-      securityWeight: 0.25,
-      religiousConsideration: 0.40,
-      activismLevel: 0.82,
+      // ליברלי; הצביע לבטל תיקון הסבירות; התנגד לענישה קולקטיבית של משפחות מחבלים
+      rightsProtection: 0.72,
+      governmentDeference: 0.35,
+      securityWeight: 0.35,
+      religiousConsideration: 0.30,
+      activismLevel: 0.65,
     },
   },
   {
@@ -98,11 +105,12 @@ export const judges: Judge[] = [
     image: '',
     tags: ['משפט מסחרי', 'רגולציה', 'ריסון שיפוטי'],
     profile: {
-      rightsProtection: 0.60,
-      governmentDeference: 0.55,
-      securityWeight: 0.50,
-      religiousConsideration: 0.40,
-      activismLevel: 0.45,
+      // ליברלי מתון; הצביע לבטל תיקון הסבירות; משפטן כלכלי אקדמי
+      rightsProtection: 0.68,
+      governmentDeference: 0.40,
+      securityWeight: 0.40,
+      religiousConsideration: 0.20,
+      activismLevel: 0.60,
     },
   },
   {
@@ -111,11 +119,12 @@ export const judges: Judge[] = [
     image: '',
     tags: ['מינהל ציבורי', 'ביקורת שיפוטית', 'זכויות אדם'],
     profile: {
-      rightsProtection: 0.75,
-      governmentDeference: 0.35,
-      securityWeight: 0.38,
-      religiousConsideration: 0.30,
-      activismLevel: 0.70,
+      // שמרנית מתונה; הצביעה נגד ביטול תיקון הסבירות; לא אידיאולוגית קיצונית
+      rightsProtection: 0.42,
+      governmentDeference: 0.62,
+      securityWeight: 0.55,
+      religiousConsideration: 0.45,
+      activismLevel: 0.25,
     },
   },
   {
@@ -124,11 +133,12 @@ export const judges: Judge[] = [
     image: '',
     tags: ['שמרנות', 'דיני ראיות', 'ריסון שיפוטי'],
     profile: {
-      rightsProtection: 0.42,
-      governmentDeference: 0.72,
-      securityWeight: 0.68,
-      religiousConsideration: 0.70,
-      activismLevel: 0.20,
+      // פוזיטיביסט משפטי; ביקר אקטיביזם שיפוטי בפומבי; הצביע נגד ביטול תיקון הסבירות
+      rightsProtection: 0.40,
+      governmentDeference: 0.70,
+      securityWeight: 0.55,
+      religiousConsideration: 0.30,
+      activismLevel: 0.15,
     },
   },
   {
@@ -137,11 +147,12 @@ export const judges: Judge[] = [
     image: '',
     tags: ['ביטחון לאומי', 'ריסון שיפוטי', 'שמרנות'],
     profile: {
-      rightsProtection: 0.40,
-      governmentDeference: 0.75,
-      securityWeight: 0.80,
-      religiousConsideration: 0.65,
-      activismLevel: 0.22,
+      // שמרן; הצביע נגד ביטול תיקון הסבירות; מקבל ביקורת שיפוטית רק במצבי קיצון
+      rightsProtection: 0.45,
+      governmentDeference: 0.68,
+      securityWeight: 0.55,
+      religiousConsideration: 0.40,
+      activismLevel: 0.20,
     },
   },
   {
@@ -150,11 +161,12 @@ export const judges: Judge[] = [
     image: '',
     tags: ['פרשנות חוקתית', 'זכויות יסוד', 'משפט ציבורי'],
     profile: {
+      // שם לא מאומת כשופט בג"ץ — ייתכן שמדובר ברות רונן (מונתה 2022, ליברלית)
       rightsProtection: 0.70,
-      governmentDeference: 0.42,
-      securityWeight: 0.45,
-      religiousConsideration: 0.38,
-      activismLevel: 0.62,
+      governmentDeference: 0.35,
+      securityWeight: 0.40,
+      religiousConsideration: 0.25,
+      activismLevel: 0.65,
     },
   },
   {
@@ -163,11 +175,12 @@ export const judges: Judge[] = [
     image: '',
     tags: ['כלכלה ומשפט', 'רגולציה', 'פרשנות טקסטואלית'],
     profile: {
-      rightsProtection: 0.55,
-      governmentDeference: 0.58,
+      // שם לא מאומת כשופט בג"ץ — ערכים מרכזיים לפי הערכה
+      rightsProtection: 0.50,
+      governmentDeference: 0.55,
       securityWeight: 0.50,
       religiousConsideration: 0.42,
-      activismLevel: 0.48,
+      activismLevel: 0.40,
     },
   },
 ];
