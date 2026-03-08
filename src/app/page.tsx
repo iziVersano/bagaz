@@ -22,11 +22,14 @@ const defaultCaseInput: CaseInput = {
   constitutionalSeverity: 50,
 };
 
+const DEFAULT_CASE_DESCRIPTION = '';
+
 export default function HomePage() {
   const [step, setStep] = useState<Step>(0);
   const [selectedJudgeIds, setSelectedJudgeIds] = useState<string[]>([]);
   const [petitionType, setPetitionType] = useState<PetitionType | null>(null);
   const [caseInput, setCaseInput] = useState<CaseInput>(defaultCaseInput);
+  const [caseDescription, setCaseDescription] = useState(DEFAULT_CASE_DESCRIPTION);
   const [result, setResult] = useState<SimulationResult | null>(null);
 
   const selectedJudges = judges.filter((j) => selectedJudgeIds.includes(j.id));
@@ -54,6 +57,7 @@ export default function HomePage() {
     setSelectedJudgeIds([]);
     setPetitionType(null);
     setCaseInput(defaultCaseInput);
+    setCaseDescription(DEFAULT_CASE_DESCRIPTION);
     setResult(null);
   };
 
@@ -151,7 +155,19 @@ export default function HomePage() {
           <div className="space-y-6">
             <div>
               <h2 className="text-2xl font-black text-white mb-1">מאפייני התיק</h2>
-              <p className="text-gray-400 text-sm">כוון את עוצמת כל מאפיין</p>
+              <p className="text-gray-400 text-sm">תאר את המקרה וכוון את עוצמת כל מאפיין</p>
+            </div>
+
+            <div>
+              <label className="text-white font-medium text-sm block mb-1">תיאור המקרה</label>
+              <p className="text-gray-500 text-xs mb-2">כתוב במילים שלך על מה העתירה</p>
+              <textarea
+                value={caseDescription}
+                onChange={(e) => setCaseDescription(e.target.value)}
+                placeholder='לדוגמה: "המדינה מבקשת לסגור את גלי צהל"'
+                rows={3}
+                className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 resize-none focus:outline-none focus:border-blue-500 transition-colors"
+              />
             </div>
 
             <CaseSliders values={caseInput} onChange={setCaseInput} />
@@ -173,6 +189,7 @@ export default function HomePage() {
               result={result}
               selectedJudges={selectedJudges}
               petitionType={petitionType}
+              caseDescription={caseDescription}
               onReset={handleReset}
             />
           </div>

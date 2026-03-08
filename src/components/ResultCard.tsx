@@ -10,10 +10,11 @@ interface ResultCardProps {
   result: SimulationResult;
   selectedJudges: Judge[];
   petitionType: PetitionType;
+  caseDescription?: string;
   onReset: () => void;
 }
 
-export default function ResultCard({ result, selectedJudges, petitionType, onReset }: ResultCardProps) {
+export default function ResultCard({ result, selectedJudges, petitionType, caseDescription, onReset }: ResultCardProps) {
   const isAccepted = result.outcome === 'accepted';
 
   const shareText = `בג״צומטר — סימולציה
@@ -69,24 +70,12 @@ export default function ResultCard({ result, selectedJudges, petitionType, onRes
       {/* Panel */}
       <div className="rounded-xl bg-gray-900 border border-gray-800 p-4">
         <p className="text-xs text-gray-500 mb-2">הרכב השופטים</p>
-        <div className="space-y-2">
-          {selectedJudges.map((judge) => {
-            const vote = result.judgeVotes.find((v) => v.judgeId === judge.id);
-            return (
-              <div key={judge.id} className="flex items-center justify-between">
-                <span className="text-sm text-gray-300">{judge.name}</span>
-                <span
-                  className={`text-xs font-bold px-2 py-0.5 rounded-full ${
-                    vote?.vote === 'support'
-                      ? 'bg-green-900/50 text-green-400'
-                      : 'bg-red-900/50 text-red-400'
-                  }`}
-                >
-                  {vote?.vote === 'support' ? 'בעד' : 'נגד'}
-                </span>
-              </div>
-            );
-          })}
+        <div className="flex flex-wrap gap-2">
+          {selectedJudges.map((judge) => (
+            <span key={judge.id} className="text-sm text-gray-300 bg-gray-800 px-3 py-1 rounded-full">
+              {judge.name}
+            </span>
+          ))}
         </div>
       </div>
 
@@ -95,6 +84,14 @@ export default function ResultCard({ result, selectedJudges, petitionType, onRes
         <p className="text-xs text-gray-500 mb-1">סוג העתירה</p>
         <p className="text-white font-medium">{petitionTypeLabels[petitionType]}</p>
       </div>
+
+      {/* Case Description */}
+      {caseDescription && (
+        <div className="rounded-xl bg-gray-900 border border-gray-800 p-4">
+          <p className="text-xs text-gray-500 mb-2">תיאור המקרה</p>
+          <p className="text-gray-200 text-sm leading-relaxed">{caseDescription}</p>
+        </div>
+      )}
 
       {/* Reasoning */}
       <div className="rounded-xl bg-gray-900 border border-gray-800 p-4">

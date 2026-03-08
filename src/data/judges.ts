@@ -20,11 +20,11 @@ export const judges: Judge[] = [
     image: '',
     tags: ['מינהל ציבורי', 'זכויות יסוד', 'ביקורת שיפוטית'],
     profile: {
-      rightsProtection: 0.80,
-      governmentDeference: 0.30,
-      securityWeight: 0.35,
-      religiousConsideration: 0.30,
-      activismLevel: 0.75,
+      rightsProtection: 0.65,
+      governmentDeference: 0.48,
+      securityWeight: 0.50,
+      religiousConsideration: 0.42,
+      activismLevel: 0.40,
     },
   },
   {
@@ -46,11 +46,11 @@ export const judges: Judge[] = [
     image: '',
     tags: ['משפט ציבורי', 'זכויות נשים', 'שקיפות ממשלתית'],
     profile: {
-      rightsProtection: 0.85,
-      governmentDeference: 0.22,
-      securityWeight: 0.28,
-      religiousConsideration: 0.20,
-      activismLevel: 0.80,
+      rightsProtection: 0.70,
+      governmentDeference: 0.45,
+      securityWeight: 0.42,
+      religiousConsideration: 0.35,
+      activismLevel: 0.42,
     },
   },
   {
