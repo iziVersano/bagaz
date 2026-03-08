@@ -1,4 +1,4 @@
-import { Judge, CaseInput, PetitionType, SimulationResult, JudgeVote } from '@/types';
+import { Judge, CaseInput, PetitionType, PoliticalLean, SimulationResult, JudgeVote } from '@/types';
 
 const SUPPORT_THRESHOLD = 0.50;
 
@@ -36,10 +36,33 @@ const judgeBaseTendency: Record<string, number> = {
   j13:  0.00, // איזנמן — centrist (est.)
 };
 
+// Political lean bonus/penalty per judge:
+// Left-wing framing boosts liberal judges, penalizes conservative ones.
+// Right-wing framing does the opposite.
+// Center has no effect.
+const leanModifiers: Record<PoliticalLean, Record<string, number>> = {
+  left: {
+    j1:  0.08, j2:  0.10, j3: -0.12, j4:  0.10, j5:  0.09,
+    j6: -0.08, j7:  0.07, j8:  0.06, j9: -0.07, j10: -0.10,
+    j11: -0.09, j12: 0.07, j13: 0.02,
+  },
+  center: {
+    j1: 0, j2: 0, j3: 0, j4: 0, j5: 0,
+    j6: 0, j7: 0, j8: 0, j9: 0, j10: 0,
+    j11: 0, j12: 0, j13: 0,
+  },
+  right: {
+    j1: -0.08, j2: -0.10, j3:  0.12, j4: -0.10, j5: -0.09,
+    j6:  0.08, j7: -0.07, j8: -0.06, j9:  0.07, j10:  0.10,
+    j11:  0.09, j12: -0.07, j13: -0.02,
+  },
+};
+
 function calculateJudgeScore(
   judge: Judge,
   caseInput: CaseInput,
-  petitionType: PetitionType
+  petitionType: PetitionType,
+  politicalLean: PoliticalLean
 ): number {
   const r = caseInput.rightsViolation / 100;
   const s = caseInput.securitySensitivity / 100;
@@ -67,8 +90,9 @@ function calculateJudgeScore(
     (judgeBaseTendency[judge.id] ?? 0.00);
 
   const typeModifier = petitionTypeModifiers[petitionType];
+  const leanModifier = leanModifiers[politicalLean][judge.id] ?? 0;
 
-  const raw = supportFactors + typeModifier;
+  const raw = supportFactors + typeModifier + leanModifier;
   return Math.max(0, Math.min(1, raw));
 }
 
@@ -109,10 +133,11 @@ function pickReasoning(outcome: 'accepted' | 'rejected', probability: number): s
 export function runSimulation(
   selectedJudges: Judge[],
   caseInput: CaseInput,
-  petitionType: PetitionType
+  petitionType: PetitionType,
+  politicalLean: PoliticalLean = 'center'
 ): SimulationResult {
   const judgeVotes: JudgeVote[] = selectedJudges.map((judge) => {
-    const score = calculateJudgeScore(judge, caseInput, petitionType);
+    const score = calculateJudgeScore(judge, caseInput, petitionType, politicalLean);
     return {
       judgeId: judge.id,
       vote: score >= SUPPORT_THRESHOLD ? 'support' : 'reject',

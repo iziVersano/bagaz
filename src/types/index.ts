@@ -14,6 +14,8 @@ export interface Judge {
   profile: JudgeProfile;
 }
 
+export type PoliticalLean = 'left' | 'center' | 'right';
+
 export type PetitionType =
   | 'knesset_law'
   | 'government_decision'

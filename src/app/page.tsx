@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Judge, PetitionType, CaseInput, SimulationResult } from '@/types';
+import { Judge, PetitionType, PoliticalLean, CaseInput, SimulationResult } from '@/types';
 import { judges } from '@/data/judges';
 import { runSimulation } from '@/lib/simulation';
 import AppHeader from '@/components/AppHeader';
@@ -30,6 +30,7 @@ export default function HomePage() {
   const [petitionType, setPetitionType] = useState<PetitionType | null>(null);
   const [caseInput, setCaseInput] = useState<CaseInput>(defaultCaseInput);
   const [caseDescription, setCaseDescription] = useState(DEFAULT_CASE_DESCRIPTION);
+  const [politicalLean, setPoliticalLean] = useState<PoliticalLean>('center');
   const [result, setResult] = useState<SimulationResult | null>(null);
 
   const selectedJudges = judges.filter((j) => selectedJudgeIds.includes(j.id));
@@ -47,7 +48,7 @@ export default function HomePage() {
 
   const handleSimulate = () => {
     if (!petitionType || selectedJudges.length !== REQUIRED_JUDGES) return;
-    const sim = runSimulation(selectedJudges, caseInput, petitionType);
+    const sim = runSimulation(selectedJudges, caseInput, petitionType, politicalLean);
     setResult(sim);
     setStep(4);
   };
@@ -58,6 +59,7 @@ export default function HomePage() {
     setPetitionType(null);
     setCaseInput(defaultCaseInput);
     setCaseDescription(DEFAULT_CASE_DESCRIPTION);
+    setPoliticalLean('center');
     setResult(null);
   };
 
@@ -189,6 +191,31 @@ export default function HomePage() {
               </div>
             </div>
 
+            {/* Political Lean */}
+            <div>
+              <label className="text-white font-medium text-sm block mb-1">נטייה פוליטית של העתירה</label>
+              <p className="text-gray-500 text-xs mb-3">כיצד העתירה תוצג בשיח הציבורי</p>
+              <div className="grid grid-cols-3 gap-2">
+                {([
+                  { value: 'right', label: 'ימנית', color: 'border-orange-500/60 bg-orange-950/30 text-orange-400' },
+                  { value: 'center', label: 'מרכז', color: 'border-gray-500/60 bg-gray-800/50 text-gray-300' },
+                  { value: 'left', label: 'שמאלית', color: 'border-blue-500/60 bg-blue-950/30 text-blue-400' },
+                ] as { value: PoliticalLean; label: string; color: string }[]).map(({ value, label, color }) => (
+                  <button
+                    key={value}
+                    onClick={() => setPoliticalLean(value)}
+                    className={`py-3 rounded-xl border text-sm font-bold transition-all ${
+                      politicalLean === value
+                        ? color
+                        : 'border-gray-700 bg-gray-900 text-gray-500 hover:border-gray-600'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <CaseSliders values={caseInput} onChange={setCaseInput} />
 
             <button
@@ -208,6 +235,7 @@ export default function HomePage() {
               result={result}
               selectedJudges={selectedJudges}
               petitionType={petitionType}
+              politicalLean={politicalLean}
               caseDescription={caseDescription}
               onReset={handleReset}
             />
