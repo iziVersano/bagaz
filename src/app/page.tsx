@@ -158,16 +158,35 @@ export default function HomePage() {
               <p className="text-gray-400 text-sm">תאר את המקרה וכוון את עוצמת כל מאפיין</p>
             </div>
 
-            <div>
-              <label className="text-white font-medium text-sm block mb-1">תיאור המקרה</label>
-              <p className="text-gray-500 text-xs mb-2">כתוב במילים שלך על מה העתירה</p>
-              <textarea
-                value={caseDescription}
-                onChange={(e) => setCaseDescription(e.target.value)}
-                placeholder='לדוגמה: "המדינה מבקשת לסגור את גלי צהל"'
-                rows={3}
-                className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 resize-none focus:outline-none focus:border-blue-500 transition-colors"
-              />
+            <div className="space-y-3">
+              <label className="text-white font-medium text-sm block">תיאור המקרה</label>
+
+              <div>
+                <p className="text-gray-500 text-xs mb-2">בחר דוגמה מוכנה</p>
+                <select
+                  onChange={(e) => { if (e.target.value) setCaseDescription(e.target.value); }}
+                  className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-500 transition-colors appearance-none cursor-pointer"
+                  defaultValue=""
+                >
+                  <option value="" disabled>-- בחר דוגמה --</option>
+                  <option value="המדינה מבקשת לסגור את גלי צהל בטענה לשיקולים תקציביים">סגירת גלי צהל</option>
+                  <option value="הממשלה מינתה בעל תפקיד בכיר ללא מכרז ובניגוד להמלצות הוועדה המקצועית">מינוי ציבורי ללא מכרז</option>
+                  <option value="חוק שמאפשר לממשלה לעקוף את הייעוץ המשפטי של היועמש בנושאים ביטחוניים">עקיפת ייעוץ משפטי</option>
+                  <option value="רשות ציבורית מסרבת לשחרר מסמכים לפי חוק חופש המידע בטענה לסודיות">סירוב לחופש המידע</option>
+                  <option value="חקיקה המגבילה פעילות ארגוני זכויות אדם המקבלים מימון מחו״ל">הגבלת ארגוני זכויות אדם</option>
+                </select>
+              </div>
+
+              <div>
+                <p className="text-gray-500 text-xs mb-2">או כתוב במילים שלך</p>
+                <textarea
+                  value={caseDescription}
+                  onChange={(e) => setCaseDescription(e.target.value)}
+                  placeholder='לדוגמה: "המדינה מבקשת לסגור את גלי צהל"'
+                  rows={3}
+                  className="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 resize-none focus:outline-none focus:border-blue-500 transition-colors"
+                />
+              </div>
             </div>
 
             <CaseSliders values={caseInput} onChange={setCaseInput} />
