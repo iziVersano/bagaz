@@ -37,9 +37,9 @@ export default function ResultCard({ result, selectedJudges, petitionType, caseD
       >
         <div className="text-5xl mb-3">{isAccepted ? '✅' : '❌'}</div>
         <h2 className={`text-2xl font-black mb-1 ${isAccepted ? 'text-green-400' : 'text-red-400'}`}>
-          {isAccepted ? 'העתירה התקבלה' : 'העתירה נדחתה'}
+          {isAccepted ? 'בגץ התערב ✋' : 'בגץ נמנע (הפעם)'}
         </h2>
-        <p className="text-gray-400 text-sm">תוצאה משוערת בסימולציה</p>
+        <p className="text-gray-400 text-sm">{isAccepted ? 'החוק/ההחלטה בוטלו בסימולציה' : 'תוצאה משוערת — אין ערובה לפעם הבאה'}</p>
       </div>
 
       {/* Vote Stats */}

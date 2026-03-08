@@ -71,14 +71,14 @@ export default function HomePage() {
         {step === 0 && (
           <div className="flex flex-col items-center justify-center min-h-[70vh] text-center gap-8">
             <div>
-              <div className="inline-block bg-blue-600/20 border border-blue-500/30 rounded-full px-4 py-1 text-blue-400 text-xs font-medium mb-4">
+              <div className="inline-block bg-red-600/20 border border-red-500/30 rounded-full px-4 py-1 text-red-400 text-xs font-medium mb-4">
                 סימולטור סאטירי
               </div>
               <h1 className="text-6xl font-black text-white mb-3 tracking-tight">
                 בג״צומטר
               </h1>
               <p className="text-gray-400 text-lg max-w-sm mx-auto leading-relaxed">
-                בחר הרכב שופטים, הגדר את סוג העתירה ומאפייניה — וגלה מה הסיכוי לקבלתה.
+                בחר הרכב שופטים, הגדר את התיק — וגלה כמה סיכוי יש לחוק הכתוב לשרוד.
               </p>
             </div>
 
@@ -86,7 +86,7 @@ export default function HomePage() {
               onClick={handleNext}
               className="w-full max-w-xs bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-200 shadow-lg shadow-blue-600/25"
             >
-              התחל סימולציה ←
+              בדוק מה יפסקו ←
             </button>
 
             <Disclaimer />
@@ -169,11 +169,11 @@ export default function HomePage() {
                   defaultValue=""
                 >
                   <option value="" disabled>-- בחר דוגמה --</option>
-                  <option value="המדינה מבקשת לסגור את גלי צהל בטענה לשיקולים תקציביים">סגירת גלי צהל</option>
-                  <option value="הממשלה מינתה בעל תפקיד בכיר ללא מכרז ובניגוד להמלצות הוועדה המקצועית">מינוי ציבורי ללא מכרז</option>
-                  <option value="חוק שמאפשר לממשלה לעקוף את הייעוץ המשפטי של היועמש בנושאים ביטחוניים">עקיפת ייעוץ משפטי</option>
-                  <option value="רשות ציבורית מסרבת לשחרר מסמכים לפי חוק חופש המידע בטענה לסודיות">סירוב לחופש המידע</option>
-                  <option value="חקיקה המגבילה פעילות ארגוני זכויות אדם המקבלים מימון מחו״ל">הגבלת ארגוני זכויות אדם</option>
+                  <option value="בחוק כתוב שסמכות המינוי של ראש השב״כ היא של ראש הממשלה בלבד — בגץ פסק שהוא לא יכול למנות">מינוי ראש השב״כ</option>
+                  <option value="בחוק כתוב שאסור למפלגות שאינן מכירות בישראל כמדינה יהודית ודמוקרטית להתמודד לכנסת — בגץ אפשר להן להתמודד">פסילת מפלגות</option>
+                  <option value="הממשלה ביקשה לסגור את גלי צהל משיקולים תקציביים — בגץ עצר את ההחלטה">סגירת גלי צהל</option>
+                  <option value="הכנסת חוקקה חוק שמאפשר לממשלה להתעלם מחוות דעת היועמש — בגץ ביטל את החוק">ביטול חוק יועמש</option>
+                  <option value="הממשלה החליטה לעצור עצור ביטחוני — בגץ התערב בהחלטה מבצעית">התערבות ביטחונית</option>
                 </select>
               </div>
 
