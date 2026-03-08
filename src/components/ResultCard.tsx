@@ -1,28 +1,20 @@
 'use client';
 
-import { SimulationResult, Judge, PetitionType, PoliticalLean } from '@/types';
+import { SimulationResult, Judge, PetitionType } from '@/types';
 import { petitionTypeLabels } from '@/data/petitionTypes';
 import ProbabilityMeter from './ProbabilityMeter';
 import Disclaimer from './Disclaimer';
 import ShareActions from './ShareActions';
 
-const leanLabel: Record<PoliticalLean, string> = { left: 'שמאלית', center: 'מרכז', right: 'ימנית' };
-const leanColor: Record<PoliticalLean, string> = {
-  left: 'text-blue-400 bg-blue-950/30 border-blue-500/40',
-  center: 'text-gray-300 bg-gray-800/50 border-gray-600/40',
-  right: 'text-orange-400 bg-orange-950/30 border-orange-500/40',
-};
-
 interface ResultCardProps {
   result: SimulationResult;
   selectedJudges: Judge[];
   petitionType: PetitionType;
-  politicalLean: PoliticalLean;
   caseDescription?: string;
   onReset: () => void;
 }
 
-export default function ResultCard({ result, selectedJudges, petitionType, politicalLean, caseDescription, onReset }: ResultCardProps) {
+export default function ResultCard({ result, selectedJudges, petitionType, caseDescription, onReset }: ResultCardProps) {
   const isAccepted = result.outcome === 'accepted';
 
   const shareText = `בג״צומטר — סימולציה
@@ -87,18 +79,10 @@ export default function ResultCard({ result, selectedJudges, petitionType, polit
         </div>
       </div>
 
-      {/* Petition Type + Political Lean */}
-      <div className="grid grid-cols-2 gap-3">
-        <div className="rounded-xl bg-gray-900 border border-gray-800 p-4">
-          <p className="text-xs text-gray-500 mb-1">סוג העתירה</p>
-          <p className="text-white font-medium text-sm">{petitionTypeLabels[petitionType]}</p>
-        </div>
-        <div className="rounded-xl bg-gray-900 border border-gray-800 p-4">
-          <p className="text-xs text-gray-500 mb-1">נטייה פוליטית</p>
-          <span className={`inline-block text-sm font-bold px-2 py-0.5 rounded-full border ${leanColor[politicalLean]}`}>
-            {leanLabel[politicalLean]}
-          </span>
-        </div>
+      {/* Petition Type */}
+      <div className="rounded-xl bg-gray-900 border border-gray-800 p-4">
+        <p className="text-xs text-gray-500 mb-1">סוג העתירה</p>
+        <p className="text-white font-medium">{petitionTypeLabels[petitionType]}</p>
       </div>
 
       {/* Case Description */}
